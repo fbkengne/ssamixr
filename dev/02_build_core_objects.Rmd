@@ -1,0 +1,63 @@
+---
+title: "02_build_core_objects"
+author: "Francis Barnabe Kengne"
+date: "2026-03-21"
+output: html_document
+---
+
+Nota: After running this file, We should run the 99_fix_rda_files.R to correct dataset elements.
+
+```{r}
+library(ssamixr)
+library(dplyr)
+library(purrr)
+library(usethis)
+
+# 1. Load the aggregated data from the package
+devtools::load_all()   # ensures MatrixData_aggregated is available
+data("MatrixData_aggregated", package = "ssamixr")
+
+# 2. Build per-matrix list
+per_matrix_list <- build_per_matrix_list(MatrixData_aggregated)
+
+# 3. Build country-level list
+country_list <- build_country_list(per_matrix_list)
+
+# 4. Build metadata table (ssa_matrices_meta)
+ssa_matrices_meta <- purrr::map_dfr(per_matrix_list, function(mo) {
+  tibble::tibble(
+    matrix_id      = mo$MatrixId,
+    study_id       = mo$Study,
+    author_year    = mo$FacetAuthorYear,
+    country        = mo$Country,
+    location_type  = mo$LocationText,
+    row_age_groups = paste(mo$RowLabels, collapse = ";"),
+    col_age_groups = paste(mo$ColLabels, collapse = ";")
+  )
+})
+
+# 5. Build list of matrices (ssa_matrices_list)
+ssa_matrices_list <- purrr::map(per_matrix_list, function(mo) {
+  list(
+    matrix      = mo$Matrix,
+    row_labels  = mo$RowLabels,
+    col_labels  = mo$ColLabels,
+    study_id    = mo$Study,
+    author_year = mo$FacetAuthorYear,
+    country     = mo$Country,
+    location_type = mo$LocationText
+  )
+})
+names(ssa_matrices_list) <- ssa_matrices_meta$matrix_id
+
+# 6. Save all objects as package data
+usethis::use_data(
+  per_matrix_list,
+  country_list,
+  ssa_matrices_meta,
+  ssa_matrices_list,
+  overwrite = TRUE
+)
+```
+
+

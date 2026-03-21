@@ -1,0 +1,36 @@
+Package: ssamixr
+Title: Social Contact Matrices for Sub-Saharan Africa
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Francis Barnabe", "Kengne", email = "fbkengne@gmail.com", role = c("aut", "cre")),
+    person("Faharudeen", "Alhassan", role = "aut"),
+    person("Kin On", "Kwok", role = "aut"),
+    person("Jing", "Kersey", role = "aut"),
+    person("Geraldo", "Chowell", role = "aut"),
+    person("Frank", "Baiden", role = "aut"),
+    person("Joyce", "Komesuor", role = "aut"),
+    person("Isaac Chun Hai", "Fung", role = "aut")
+    )
+Description: Provides access to empirical social contact matrices from a
+    systematic review in Sub-Saharan Africa, with tools to list, filter,
+    and retrieve matrices for infectious disease modeling.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends:
+    R (>= 3.5.0)
+Imports:
+    dplyr,
+    ggplot2,
+    patchwork,
+    purrr,
+    readxl,
+    reshape2,
+    stringr,
+    tidyr
+Suggests:
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+LazyData: true

@@ -1,0 +1,104 @@
+---
+title: "Introduction to ssamixr"
+author: "Francis Barnabe Kengne et al. (2026)"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to ssamixr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(ssamixr)
+library(dplyr)
+library(ggplot2)
+```
+
+# Load internal package data directly from the namespace
+
+```{r}
+data("country_list", package = "ssamixr")
+data("ssa_matrices_meta", package = "ssamixr")
+```
+
+Overview
+========
+
+The ssamixr package provides access to 171 empirical social contact matrices
+collected from a systematic review of studies conducted in Sub-Saharan Africa
+(up to May 30, 2025). These matrices describe age‑specific contact patterns
+useful for infectious disease modeling, public health analysis, and
+epidemiological research.
+
+This vignette introduces the core functionality of the package:
+
+-Listing all available matrices
+
+-Filtering matrices by country, study, author, or location type
+
+-Retrieving a specific matrix
+
+-Plotting matrices using built‑in heatmap utilities
+
+Listing matrices
+
+```{r}
+list_matrices() %>% head()
+```
+
+Filtering matrices
+
+Filter by country:
+
+```{r}
+filter_matrices(country = "Kenya")
+```
+
+Filter by location type:
+
+```{r}
+filter_matrices(location_type = "HH")
+```
+
+Retrieving a matrix
+
+```{r}
+m <- get_matrix("201")
+m$matrix
+m$row_labels
+m$col_labels
+```
+
+Plotting matrices
+
+To plot all matrices for a country:
+
+```{r}
+df_long <- build_country_long("Cameroon")
+plot_country_heatmaps(df_long, "Cameroon")
+```
+
+To use the purple–yellow gradient:
+
+```{r}
+plot_country_heatmaps_gradientn(df_long, "Cameroon")
+```
+
+Citation
+
+If you use ssamixr in your research, please cite:
+
+Kengne et al. (2026). Social contact matrices in Sub‑Saharan Africa.
+
+A full citation entry is available via:
+
+```{r}
+citation("ssamixr")
+```
+
+Conclusion
+
+The ssamixr package provides a unified, reproducible interface for accessing,
+filtering, and visualizing empirical social contact matrices from Sub‑Saharan
+Africa. It is designed to support modeling workflows, comparative studies, and
+public health decision‑making.

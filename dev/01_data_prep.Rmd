@@ -1,0 +1,40 @@
+---
+title: "01_data_prep"
+author: "Francis Barnabe Kengne"
+date: "2026-03-21"
+output: html_document
+---
+
+```{r}
+library(readxl)
+library(dplyr)
+library(usethis)
+
+# 1. Load raw Excel files using system.file()
+MatrixData <- readxl::read_excel(
+  system.file("extdata", "MatrixData.xlsx", package = "ssamixr"),
+  sheet = "MatrixData"
+)
+names(MatrixData) <- make.names(names(MatrixData))
+
+StCharacteristics <- readxl::read_excel(
+  system.file("extdata", "StudyCharacteristics.xlsx", package = "ssamixr"),
+  sheet = "Sheet1"
+)
+names(StCharacteristics) <- make.names(names(StCharacteristics))
+
+# 2. Merge them
+MatrixData_aggregated <- dplyr::left_join(
+  MatrixData,
+  StCharacteristics,
+  by = c("Study", "Country..Area.District")
+)
+
+# 3. Coerce logical column
+MatrixData_aggregated$RowParticipantAssignment <-
+  as.logical(MatrixData_aggregated$RowParticipantAssignment)
+
+# 4. Save as package data
+usethis::use_data(MatrixData_aggregated, overwrite = TRUE)
+```
+

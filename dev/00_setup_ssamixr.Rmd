@@ -1,0 +1,41 @@
+---
+title: "01_data_prep"
+author: "Francis Barnabe Kengne"
+date: "2026-03-21"
+output: html_document
+---
+
+Nota: This is a one time run file, during data peparation.
+
+```{r}
+#install.packages(c("usethis", "devtools", "roxygen2"))
+library(usethis)
+library(devtools)
+
+# use_description(fields = list(
+#  Title = "Social Contact Matrices for Sub-Saharan Africa",
+#  Description = "Provides access to empirical social contact matrices from a systematic review in Sub-Saharan Africa, with tools to list, filter, # and retrieve matrices for infectious disease modeling.",
+#  `Authors@R` = 'c(
+#    person("Francis Barnabe", "Kengne", email = "fbkengne@gmail.com", role = c("aut", "cre")),
+#    person("Faharudeen", "Alhassan", role = "aut"),
+#    person("Kin On", "Kwok", role = "aut"),
+#    person("Jing", "Kersey", role = "aut"),
+#    person("Geraldo", "Chowell", role = "aut"),
+#    person("Frank", "Baiden", role = "aut"),
+#    person("Joyce", "Komesuor", role = "aut"),
+#    person("Isaac Chun Hai", "Fung", role = "aut")
+#  )',
+#  License = "MIT + file LICENSE"
+# ))
+
+#use_mit_license("Francis Barnabe Kengne")
+#use_package("ggplot2")
+#use_package("dplyr")
+#use_package("purrr")
+#use_package("reshape2")
+#use_package("stringr")
+#use_package("tidyr")
+#use_package("readxl")
+#use_package("patchwork")
+```
+
