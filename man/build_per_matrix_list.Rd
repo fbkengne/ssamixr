@@ -12,12 +12,6 @@ age groups, and study metadata.}
 }
 \value{
 A list of per-matrix objects.
-\itemize{
-\item Matrix (numeric matrix)
-\item RowLabels, ColLabels
-\item Study, Country, MatrixId
-\item Metadata for plotting and filtering
-}
 }
 \description{
 Converts the raw MatrixData_aggregated data frame into a list

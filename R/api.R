@@ -4,8 +4,13 @@
 
 #' List all available SSA social contact matrices
 #'
-#' Returns a tibble containing metadata for all matrices included
-#' in the ssamixr package.
+#' @description
+#' Returns a tibble with metadata for all matrices included in the ssamixr package.
+#'
+#' @details
+#' For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+#' see the appendix included in the package:
+#' \code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 #'
 #' @return A tibble with one row per matrix and metadata columns.
 #' @export
@@ -23,6 +28,11 @@ list_matrices <- function() {
 #' @param author_year Optional character vector of author-year labels.
 #' @param location_type Optional character vector such as
 #'   "All", "HH", "School", "Work", "Other".
+#'
+#' @details
+#' For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+#' see the appendix included in the package:
+#' \code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 #'
 #' @return A tibble containing only matrices that match the filters.
 #' @export
@@ -55,6 +65,11 @@ filter_matrices <- function(country = NULL,
 #' for a given matrix ID.
 #'
 #' @param matrix_id Character or numeric ID of the matrix.
+#'
+#' @details
+#' For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+#' see the appendix included in the package:
+#' \code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 #'
 #' @return A list containing:
 #'   \describe{

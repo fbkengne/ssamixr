@@ -25,7 +25,8 @@ A list containing:
 Returns the numeric matrix, row/column labels, and metadata
 for a given matrix ID.
 }
-\examples{
-m <- get_matrix("201")
-m$matrix
+\details{
+For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+see the appendix included in the package:
+\code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 }

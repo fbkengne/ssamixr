@@ -7,7 +7,11 @@ disease modeling and comparative epidemiology.
 # 🚀 Installation
 
 ```r
-# install.packages("devtools")
+# Load required package
+if (!requireNamespace("pacman", quietly = TRUE)) {
+  install.packages("pacman")
+}
+pacman::p_load(devtools)
 devtools::install_github("fbkengne/ssamixr")
 ```
 
@@ -196,6 +200,20 @@ please open an issue or submit a pull request on GitHub.
 📄 License<br>
 This package is released under the MIT License.
 See LICENSE for details.
+
+📄 Appendix: Full Social Contact Matrix Catalogue<br>
+A complete appendix summarizing all 171 social contact matrices across 18 Sub‑Saharan African countries, including:<br>
+- matrix counts by country<br>
+- location types (household, school, work, other)<br>
+- rural/urban distribution<br>
+- COVID‑19 vs pre‑COVID periods<br>
+- heatmaps and descriptions for each country<br>
+
+The appendix is available in the package at:
+
+```r
+system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")
+```
 
 📬 Citation<br>
 If you use ssamixr in your research, please cite:<br>

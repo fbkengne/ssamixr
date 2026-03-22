@@ -2,7 +2,7 @@
 % Please edit documentation in R/heatmap_utils.R
 \name{plot_country_heatmaps_gradientn}
 \alias{plot_country_heatmaps_gradientn}
-\title{Plot heatmaps for all matrices in a country}
+\title{Plot heatmaps for all matrices in a country (gradientn palette)}
 \usage{
 plot_country_heatmaps_gradientn(
   df_long,
@@ -57,5 +57,5 @@ plot_country_heatmaps_gradientn(
 A ggplot object.
 }
 \description{
-Plot heatmaps for all matrices in a country
+Plot heatmaps for all matrices in a country (gradientn palette)
 }

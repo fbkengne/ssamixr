@@ -10,9 +10,10 @@ list_matrices()
 A tibble with one row per matrix and metadata columns.
 }
 \description{
-This function returns a tibble containing metadata for all
-social contact matrices included in the ssamixr package.
+Returns a tibble with metadata for all matrices included in the ssamixr package.
 }
-\examples{
-list_matrices()
+\details{
+For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+see the appendix included in the package:
+\code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 }

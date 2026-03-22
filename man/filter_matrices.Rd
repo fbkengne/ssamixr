@@ -28,7 +28,8 @@ A tibble containing only matrices that match the filters.
 Allows users to filter the available social contact matrices
 by country, study ID, author-year, or location type.
 }
-\examples{
-filter_matrices(country = "Kenya")
-filter_matrices(location_type = "HH")
+\details{
+For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
+see the appendix included in the package:
+\code{system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")}.
 }
