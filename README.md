@@ -14,11 +14,11 @@ devtools::install_github("fbkengne/ssamixr")
 🧭 Getting Started: A Simple Workflow
 Most users will want to:
 
-- List all available matrices
-- Filter matrices by country, study, or location
-- Select a matrix ID
-- Retrieve the matrix
-- Visualize it
+1. List all available matrices
+2. Filter matrices by country, study, or location
+3. Select a matrix ID
+4. Retrieve the matrix
+5. Visualize it
 
 Here is the recommended workflow.
 
@@ -34,7 +34,6 @@ head(all_mats)
 This returns a tibble with metadata for all 171 matrices.
 
 2️⃣ Filter matrices
-
 You can filter by:
 
 - country
@@ -89,7 +88,6 @@ plot_matrix_gradient(m)
 ```
 
 📊 Dataset Summary
-
 The package contains:
 
 - 171 social contact matrices
@@ -178,7 +176,6 @@ vignette("ssamixr")
 ```
 
 📁 Package Structure
-
 ssamixr/
 ├── R/                 # Functions
 ├── data/              # Internal datasets
