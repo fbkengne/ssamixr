@@ -11,7 +11,7 @@ disease modeling and comparative epidemiology.
 devtools::install_github("fbkengne/ssamixr")
 ```
 
-🧭 Getting Started: A Simple Workflow
+🧭 Getting Started: A Simple Workflow <br>
 Most users will want to:
 
 1. List all available matrices
@@ -33,7 +33,7 @@ head(all_mats)
 
 This returns a tibble with metadata for all 171 matrices.
 
-2️⃣ Filter matrices
+2️⃣ Filter matrices <br>
 You can filter by:
 
 - country
@@ -87,7 +87,7 @@ Or with a gradient:
 plot_matrix_gradient(m)
 ```
 
-📊 Dataset Summary
+📊 Dataset Summary <br>
 The package contains:
 
 - 171 social contact matrices
@@ -99,16 +99,16 @@ The package contains:
   . Work
   . Other settings (Other)
 
-- Each matrix includes:
+- Each matrix includes:<br>
 
-  . A numeric contact matrix
-  . Age‑group labels
-  . Study metadata
-  . Location type
-  . Country and author‑year identifiers
+  . A numeric contact matrix<br>
+  . Age‑group labels<br>
+  . Study metadata<br>
+  . Location type<br>
+  . Country and author‑year identifiers<br>
 
-🌍 Countries Included:
-The package includes matrices from the following 18 countries:
+🌍 Countries Included:<br>
+The package includes matrices from the following 18 countries: <br>
 
 - Angola
 - Burkina Faso
@@ -131,14 +131,14 @@ The package includes matrices from the following 18 countries:
 
 (If you want, you can auto‑generate this list directly from the metadata.)
 
-🏷️ Filtering Options
+🏷️ Filtering Options<br>
 Users can filter matrices using the following metadata fields:
 
-Field	Description
-country:	Country name (18 total)
-study_id:	Unique study identifier
-author_year:	Author + publication year label
-location_type:	Contact setting: All, HH, School, Work, Other
+Field	Description<br>
+country:	Country name (18 total)<br>
+study_id:	Unique study identifier<br>
+author_year:	Author + publication year label<br>
+location_type:	Contact setting: All, HH, School, Work, Other<br>
 
 Example:
 
@@ -149,8 +149,8 @@ filter_matrices(
 )
 ```
 
-📦 Overview
-ssamixr provides:
+📦 Overview<br>
+ssamixr provides:<br>
 
 Age‑structured social contact matrices for Sub‑Saharan African countries
 Harmonized metadata for filtering and selection
@@ -163,7 +163,7 @@ Designed for:
 - Policy analysts
 - Students learning age‑structured modeling
 
-🌍 Data Sources
+🌍 Data Sources<br>
 The matrices included in ssamixr are derived from:
 - Empirical contact surveys conducted across Sub‑Saharan Africa
 - Harmonized demographic data
@@ -175,17 +175,17 @@ Full details are available in the package vignette:
 vignette("ssamixr")
 ```
 
-📁 Package Structure
-ssamixr/
-├── R/                 # Functions
-├── data/              # Internal datasets
-├── inst/              # Metadata and documentation
-├── vignettes/         # Long-form documentation
-└── dev/               # Development scripts
+📁 Package Structure<br>
+ssamixr/<br>
+├── R/                 # Functions<br>
+├── data/              # Internal datasets<br>
+├── inst/              # Metadata and documentation<br>
+├── vignettes/         # Long-form documentation<br>
+└── dev/               # Development scripts<br>
 
-🤝 Contributing
-Contributions are welcome.
-If you would like to:
+🤝 Contributing<br>
+Contributions are welcome.<br>
+If you would like to:<br>
 - Add new matrices
 - Improve documentation
 - Report issues
@@ -193,27 +193,27 @@ If you would like to:
 
 please open an issue or submit a pull request on GitHub.
 
-📄 License
+📄 License<br>
 This package is released under the MIT License.
 See LICENSE for details.
 
-📬 Citation
-If you use ssamixr in your research, please cite:
+📬 Citation<br>
+If you use ssamixr in your research, please cite:<br>
 
 Kengne FB, et al. (2026). ssamixr: Social Contact Matrices for Sub‑Saharan Africa.
-A full citation entry is available via:
+A full citation entry is available via:<br>
 
 ```r
 citation("ssamixr")
 ```
 
-🧪 Reproducibility
-This package follows best practices for reproducible research:
+🧪 Reproducibility<br>
+This package follows best practices for reproducible research:<br>
 
-- Version‑controlled development
-- Documented data processing pipelines
-- Vignettes demonstrating usage
-- Stable GitHub releases with DOIs (via Zenodo)
+- Version‑controlled development<br>
+- Documented data processing pipelines<br>
+- Vignettes demonstrating usage<br>
+- Stable GitHub releases with DOIs (via Zenodo)<br>
 
-🙏 Acknowledgments
+🙏 Acknowledgments<br>
 We thank the researchers, survey teams, and collaborators who contributed to the collection and harmonization of social contact data across Sub‑Saharan Africa.
