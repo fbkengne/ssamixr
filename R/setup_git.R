@@ -9,9 +9,7 @@
 if (!requireNamespace("pacman", quietly = TRUE)) {
   install.packages("pacman")
 }
-pacman::p_load(
-  usethis, gitcreds, usethis
-)
+pacman::p_load(usethis, gitcreds)
 
 # ------------------------------------------------------------
 # 1. Set Git identity (run once per machine)
@@ -23,66 +21,80 @@ use_git_config(
 
 # ------------------------------------------------------------
 # 2. Initialize Git in the project
-#    (creates .git folder, stages files, first commit)
 # ------------------------------------------------------------
 use_git()
 
-# ------------------------------------------------------------
-# 3. Connect the local project to GitHub
-#    (pushes all files to the GitHub repo you created)
-# ------------------------------------------------------------
-use_github()
-
-# ------------------------------------------------------------
-# After running this script:
-# - Your package will be fully version-controlled
-# - Your GitHub repo will contain all package files
-# - Other researchers can install via:
-#       devtools::install_github("fbkengne/ssamixr")
-# ------------------------------------------------------------
-
-# Create your GitHub token
-usethis::create_github_token()
-
-# This will:
-
-# Open GitHub in your browser
-
-# Take you directly to the “Generate new token (classic)” page
-
-# On that page:
-
-#  ✔ Token name
-# R package development
-
-# ✔ Expiration
-# Choose 90 days or No expiration
-
-# ✔ Scopes (VERY IMPORTANT)
-# Check:
-
-#  repo
-
-# workflow (optional but recommended)
-
-# Scroll down → click Generate token.
-
-# 90 days token for the project
-# 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
-
-#Install github and verify the version
+# Verify Git installation
 system("git --version")
 
-# Store the token in R
-gitcreds::gitcreds_set()
+# ------------------------------------------------------------
+# 3. Create and store GitHub token (manual step)
+# ------------------------------------------------------------
+# Run this to open GitHub in your browser:
+# usethis::create_github_token()
+#
+# Then store the token securely:
+# gitcreds::gitcreds_set()
+#
+# IMPORTANT:
+# Never paste your token inside this script.
 
+# ------------------------------------------------------------
+# 4. Add GitHub remote manually
+# ------------------------------------------------------------
+usethis::use_git_remote(
+  name = "origin",
+  url = "https://github.com/fbkengne/ssamixr.git"
+)
 
-# Use github
-usethis::use_github()
+# ------------------------------------------------------------
+# 5. Mark this directory as safe for Git
+# ------------------------------------------------------------
+system('git config --global --add safe.directory D:/ssamixr')
 
+# ------------------------------------------------------------
+# 6. Verify remote
+# ------------------------------------------------------------
+system("git remote -v")
 
+# ------------------------------------------------------------
+# 7. Push manually using RStudio Git pane or:
+# ------------------------------------------------------------
+ system("git push -u origin master")
 
+# 3 commit failed due to security violation, so we reset 3 times
+system("git reset --soft HEAD~3")
 
+#Force-push the cleaned history
+system("git push -u origin master --force-with-lease")
 
+#Check the remote branch names
+system("git ls-remote --heads origin")
 
+#If the remote branch is main
+system("git push origin --delete main")
 
+#Then push your clean branch:
+#Rename your local branch to main
+system("git branch -M main")
+
+#Fetch the latest remote branch
+system("git fetch origin")
+
+#Set your local branch to track the remote
+system("git branch -u origin/main")
+
+#Try the force‑push again
+system("git push -u origin main --force")
+
+#Confirm the sensitive commit is gone from your history
+system("git log --oneline")
+
+#Hard reset to the clean commit
+system("git reset --hard 14bc8f4")
+
+#Rewrite history to remove earlier commits
+system("git push origin main --force")
+
+#Bump the version in DESCRIPTION
+usethis::use_version("minor")
