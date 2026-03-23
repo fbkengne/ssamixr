@@ -1,6 +1,7 @@
 **Social Contact Matrices for Sub‑Saharan Africa**
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174709.svg)](https://doi.org/10.5281/zenodo.19174709)
 
-`ssamixr` provides harmonized, ready‑to‑use social contact matrices from empirical studies conducted across Sub‑Saharan Africa.  
+`ssamixr` is an R package that provides harmonized, ready‑to‑use social contact matrices from empirical studies conducted across Sub‑Saharan Africa.  
 The package includes **171 matrices** covering multiple countries, settings, and study designs — all standardized for infectious 
 disease modeling and comparative epidemiology.
 
@@ -19,7 +20,7 @@ devtools::install_github("fbkengne/ssamixr")
 library(ssamixr)
 ```
 
-🧭 Getting Started: A Simple Workflow <br>
+🧭 Getting Started: A Simple Workflow   
 Most users will want to:
 
 1. List all available matrices
@@ -41,7 +42,7 @@ head(all_mats)
 
 This returns a tibble with metadata for all 171 matrices.
 
-2️⃣ Filter matrices <br>
+2️⃣ Filter matrices   
 You can filter by:
 
 - country
@@ -95,7 +96,7 @@ Or with a gradient:
 plot_matrix_gradient(m)
 ```
 
-📊 Dataset Summary <br>
+📊 Dataset Summary   
 The package contains:
 
 - 171 social contact matrices
@@ -107,16 +108,16 @@ The package contains:
   . Work
   . Other settings (Other)
 
-- Each matrix includes:<br>
+- Each matrix includes:  
 
-  . A numeric contact matrix<br>
-  . Age‑group labels<br>
-  . Study metadata<br>
-  . Location type<br>
-  . Country and author‑year identifiers<br>
+  . A numeric contact matrix  
+  . Age‑group labels  
+  . Study metadata  
+  . Location type  
+  . Country and author‑year identifiers  
 
-🌍 Countries Included:<br>
-The package includes matrices from the following 18 countries: <br>
+🌍 Countries Included:  
+The package includes matrices from the following 18 countries:   
 
 - Angola
 - Burkina Faso
@@ -139,14 +140,14 @@ The package includes matrices from the following 18 countries: <br>
 
 (If you want, you can auto‑generate this list directly from the metadata.)
 
-🏷️ Filtering Options<br>
+🏷️ Filtering Options  
 Users can filter matrices using the following metadata fields:
 
-Field	Description<br>
-country:	Country name (18 total)<br>
-study_id:	Unique study identifier<br>
-author_year:	Author + publication year label<br>
-location_type:	Contact setting: All, HH, School, Work, Other<br>
+Field	Description  
+country:	Country name (18 total)  
+study_id:	Unique study identifier  
+author_year:	Author + publication year label  
+location_type:	Contact setting: All, HH, School, Work, Other  
 
 Example:
 
@@ -157,8 +158,8 @@ filter_matrices(
 )
 ```
 
-📦 Overview<br>
-ssamixr provides:<br>
+📦 Overview  
+ssamixr provides:  
 
 Age‑structured social contact matrices for Sub‑Saharan African countries
 Harmonized metadata for filtering and selection
@@ -171,7 +172,7 @@ Designed for:
 - Policy analysts
 - Students learning age‑structured modeling
 
-🌍 Data Sources<br>
+🌍 Data Sources  
 The matrices included in ssamixr are derived from:
 - Empirical contact surveys conducted across Sub‑Saharan Africa
 - Harmonized demographic data
@@ -183,17 +184,17 @@ Full details are available in the package vignette:
 vignette("ssamixr")
 ```
 
-📁 Package Structure<br>
-ssamixr/<br>
-├── R/                 # Functions<br>
-├── data/              # Internal datasets<br>
-├── inst/              # Metadata and documentation<br>
-├── vignettes/         # Long-form documentation<br>
-└── dev/               # Development scripts<br>
+📁 Package Structure  
+ssamixr/  
+├── R/                 # Functions  
+├── data/              # Internal datasets  
+├── inst/              # Metadata and documentation  
+├── vignettes/         # Long-form documentation  
+└── dev/               # Development scripts  
 
-🤝 Contributing<br>
-Contributions are welcome.<br>
-If you would like to:<br>
+🤝 Contributing  
+Contributions are welcome.  
+If you would like to:  
 - Add new matrices
 - Improve documentation
 - Report issues
@@ -201,17 +202,17 @@ If you would like to:<br>
 
 please open an issue or submit a pull request on GitHub.
 
-📄 License<br>
+📄 License  
 This package is released under the MIT License.
 See LICENSE for details.
 
-📄 Appendix: Full Social Contact Matrix Catalogue<br>
-A complete appendix summarizing all 171 social contact matrices across 18 Sub‑Saharan African countries, including:<br>
-- matrix counts by country<br>
-- location types (household, school, work, other)<br>
-- rural/urban distribution<br>
-- COVID‑19 vs pre‑COVID periods<br>
-- heatmaps and descriptions for each country<br>
+📄 Appendix: Full Social Contact Matrix Catalogue  
+A complete appendix summarizing all 171 social contact matrices across 18 Sub‑Saharan African countries, including:  
+- matrix counts by country  
+- location types (household, school, work, other)  
+- rural/urban distribution  
+- COVID‑19 vs pre‑COVID periods  
+- heatmaps and descriptions for each country  
 
 The appendix is available in the package at:
 
@@ -219,23 +220,23 @@ The appendix is available in the package at:
 system.file("extdata", "social_contact_appendix.pdf", package = "ssamixr")
 ```
 
-📬 Citation<br>
-If you use ssamixr in your research, please cite:<br>
+📬 Citation  
+If you use ssamixr in your research, please cite:  
 
 Kengne FB, et al. (2026). ssamixr: Social Contact Matrices for Sub‑Saharan Africa.
-A full citation entry is available via:<br>
+A full citation entry is available via:  
 
 ```r
 citation("ssamixr")
 ```
 
-🧪 Reproducibility<br>
-This package follows best practices for reproducible research:<br>
+🧪 Reproducibility  
+This package follows best practices for reproducible research:  
 
-- Version‑controlled development<br>
-- Documented data processing pipelines<br>
-- Vignettes demonstrating usage<br>
-- Stable GitHub releases with DOIs (via Zenodo)<br>
+- Version‑controlled development  
+- Documented data processing pipelines  
+- Vignettes demonstrating usage  
+- Stable GitHub releases with DOIs (via Zenodo)  
 
-🙏 Acknowledgments<br>
+🙏 Acknowledgments  
 We thank the researchers, survey teams, and collaborators who contributed to the collection and harmonization of social contact data across Sub‑Saharan Africa.
