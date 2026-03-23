@@ -1,4 +1,4 @@
-**Social Contact Matrices for Sub‑Saharan Africa**
+**Social Contact Matrices for Sub‑Saharan Africa**  
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174709.svg)](https://doi.org/10.5281/zenodo.19174709)
 
 `ssamixr` is an R package that provides harmonized, ready‑to‑use social contact matrices from empirical studies conducted across Sub‑Saharan Africa.  
