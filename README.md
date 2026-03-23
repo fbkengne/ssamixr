@@ -7,12 +7,16 @@ disease modeling and comparative epidemiology.
 # 🚀 Installation
 
 ```r
-# Load required package
-if (!requireNamespace("pacman", quietly = TRUE)) {
-  install.packages("pacman")
+# Install devtools if needed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
 }
-pacman::p_load(devtools)
+
+# Install ssamixr from GitHub
 devtools::install_github("fbkengne/ssamixr")
+
+# Load the package
+library(ssamixr)
 ```
 
 🧭 Getting Started: A Simple Workflow <br>
