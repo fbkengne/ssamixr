@@ -1,5 +1,5 @@
 **Social Contact Matrices for Sub‑Saharan Africa**  
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174709.svg)](https://doi.org/10.5281/zenodo.19174709)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174136.svg)](https://doi.org/10.5281/zenodo.19174136)
 
 `ssamixr` is an R package that provides harmonized, ready‑to‑use social contact matrices from empirical studies conducted across Sub‑Saharan Africa.  
 The package includes **171 matrices** covering multiple countries, settings, and study designs — all standardized for infectious 
@@ -48,7 +48,7 @@ You can filter by:
 - country
 - study_id
 - author_year
-- location_type (All, HH, School, Work, Other)
+- location_type (All, HH, NonHH, School, Work, Other)
 
 Example: matrices from Kenya:
 
@@ -119,8 +119,6 @@ The package contains:
 🌍 Countries Included:  
 The package includes matrices from the following 18 countries:   
 
-- Angola
-- Burkina Faso
 - Cameroon
 - Democratic Republic of Congo
 - Ethiopia
@@ -129,10 +127,12 @@ The package includes matrices from the following 18 countries:
 - Guinea
 - Ivory Coast
 - Kenya
+- Liberia
 - Malawi
 - Mozambique
 - Nigeria
 - Senegal
+- Somalia/Somaliland
 - South Africa
 - Uganda
 - Zambia
