@@ -160,7 +160,8 @@ plot_matrix <- function(m,
       } else {
         ggplot2::element_text()
       },
-      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
+      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = ggplot2::element_text(hjust = 0.5)   # CENTERED SUBTITLE
     )
 }
 
@@ -216,7 +217,7 @@ plot_matrix_gradient <- function(m,
       } else {
         ggplot2::element_text()
       },
-      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
+      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5),
+      plot.subtitle = ggplot2::element_text(hjust = 0.5)   # CENTERED SUBTITLE
     )
 }
-
