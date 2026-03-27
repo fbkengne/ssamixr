@@ -115,7 +115,8 @@ get_matrix <- function(matrix_id) {
 #' @param high_color High end of the fill gradient.
 #' @param value_text Whether to print numeric values in cells.
 #' @param size Text size for cell values.
-#' @param col_label_orientation "normal" or "vertical".
+#' @param col_label_orientation "normal", "vertical", or "auto".
+#' @param base_size Base font size for the plot.
 #'
 #' @return A ggplot object.
 #' @export
@@ -124,10 +125,16 @@ plot_matrix <- function(m,
                         low_color = "white",
                         high_color = "red",
                         value_text = TRUE,
-                        size = 4,
-                        col_label_orientation = "normal") {
+                        size = 4.5,
+                        col_label_orientation = "auto",
+                        base_size = 16) {
 
   stopifnot(is.list(m), !is.null(m$matrix))
+
+  # Auto-rotate if many age groups
+  if (col_label_orientation == "auto") {
+    col_label_orientation <- if (length(m$col_labels) > 10) "vertical" else "normal"
+  }
 
   df <- reshape2::melt(m$matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
   df$RowLabel <- m$row_labels[df$RowIdx]
@@ -146,7 +153,7 @@ plot_matrix <- function(m,
       x = "Contacts age groups (years)",
       y = "Participants age groups (years)"
     ) +
-    ggplot2::theme_minimal(base_size = 14) +
+    ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
       axis.text.x = if (col_label_orientation == "vertical") {
         ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
@@ -163,17 +170,24 @@ plot_matrix <- function(m,
 #' @param blank_color Color for missing cells.
 #' @param value_text Whether to print numeric values in cells.
 #' @param size Text size for cell values.
-#' @param col_label_orientation "normal" or "vertical".
+#' @param col_label_orientation "normal", "vertical", or "auto".
+#' @param base_size Base font size for the plot.
 #'
 #' @return A ggplot object.
 #' @export
 plot_matrix_gradient <- function(m,
                                  blank_color = "grey90",
                                  value_text = TRUE,
-                                 size = 4,
-                                 col_label_orientation = "normal") {
+                                 size = 4.5,
+                                 col_label_orientation = "auto",
+                                 base_size = 16) {
 
   stopifnot(is.list(m), !is.null(m$matrix))
+
+  # Auto-rotate if many age groups
+  if (col_label_orientation == "auto") {
+    col_label_orientation <- if (length(m$col_labels) > 10) "vertical" else "normal"
+  }
 
   df <- reshape2::melt(m$matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
   df$RowLabel <- m$row_labels[df$RowIdx]
@@ -195,7 +209,7 @@ plot_matrix_gradient <- function(m,
       x = "Contacts age groups (years)",
       y = "Participants age groups (years)"
     ) +
-    ggplot2::theme_minimal(base_size = 14) +
+    ggplot2::theme_minimal(base_size = base_size) +
     ggplot2::theme(
       axis.text.x = if (col_label_orientation == "vertical") {
         ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
@@ -205,3 +219,4 @@ plot_matrix_gradient <- function(m,
       plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
     )
 }
+

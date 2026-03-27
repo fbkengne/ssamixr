@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use ssamixr, please cite it as below."
 title: "ssamixr: Social Contact Matrices for Sub-Saharan Africa"
 version: "0.1.0"
-doi: 10.5281/zenodo.19174709
+doi: 10.5281/zenodo.19174136
 date-released: 2026-03-22
 authors:
   - family-names: Kengne

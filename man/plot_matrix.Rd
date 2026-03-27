@@ -10,8 +10,9 @@ plot_matrix(
   low_color = "white",
   high_color = "red",
   value_text = TRUE,
-  size = 4,
-  col_label_orientation = "normal"
+  size = 4.5,
+  col_label_orientation = "auto",
+  base_size = 16
 )
 }
 \arguments{
@@ -27,7 +28,9 @@ plot_matrix(
 
 \item{size}{Text size for cell values.}
 
-\item{col_label_orientation}{"normal" or "vertical".}
+\item{col_label_orientation}{"normal", "vertical", or "auto".}
+
+\item{base_size}{Base font size for the plot.}
 }
 \value{
 A ggplot object.

@@ -8,8 +8,9 @@ plot_matrix_gradient(
   m,
   blank_color = "grey90",
   value_text = TRUE,
-  size = 4,
-  col_label_orientation = "normal"
+  size = 4.5,
+  col_label_orientation = "auto",
+  base_size = 16
 )
 }
 \arguments{
@@ -21,7 +22,9 @@ plot_matrix_gradient(
 
 \item{size}{Text size for cell values.}
 
-\item{col_label_orientation}{"normal" or "vertical".}
+\item{col_label_orientation}{"normal", "vertical", or "auto".}
+
+\item{base_size}{Base font size for the plot.}
 }
 \value{
 A ggplot object.
