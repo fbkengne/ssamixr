@@ -1,3 +1,7 @@
+---
+output: github_document
+---
+
 **Social Contact Matrices for Sub‑Saharan Africa**  
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174136.svg)](https://doi.org/10.5281/zenodo.19174136)
 
@@ -33,7 +37,7 @@ Here is the recommended workflow.
 
 1️⃣ List all matrices
 
-```r
+```{r, , echo=TRUE}
 all_mats <- list_matrices()
 head(all_mats)
 ```
