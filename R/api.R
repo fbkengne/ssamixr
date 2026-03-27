@@ -2,6 +2,11 @@
 # User-facing API for ssamixr
 # ============================================================
 
+#' @import dplyr
+#' @import tidyr
+#' @import reshape2
+#' @import ggplot2
+
 #' List all available SSA social contact matrices
 #'
 #' @description
@@ -63,7 +68,7 @@ filter_matrices <- function(country = NULL,
   }
 
   # Step 3: Return original rows (preserve combined location_type)
-  df %>% 
+  df %>%
     dplyr::slice(unique(df_expanded$row_id))
 }
 
