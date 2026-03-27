@@ -6,6 +6,7 @@
 #' @import tidyr
 #' @import reshape2
 #' @import ggplot2
+NULL
 
 #' List all available SSA social contact matrices
 #'
@@ -126,11 +127,11 @@ plot_matrix <- function(m,
                         size = 4,
                         col_label_orientation = "normal") {
 
-  stopifnot(is.list(m), !is.null(m$Matrix))
+  stopifnot(is.list(m), !is.null(m$matrix))
 
-  df <- reshape2::melt(m$Matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
-  df$RowLabel <- m$RowLabels[df$RowIdx]
-  df$ColLabel <- m$ColLabels[df$ColIdx]
+  df <- reshape2::melt(m$matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
+  df$RowLabel <- m$row_labels[df$RowIdx]
+  df$ColLabel <- m$col_labels[df$ColIdx]
 
   ggplot2::ggplot(df, ggplot2::aes(x = ColLabel, y = RowLabel)) +
     ggplot2::geom_tile(ggplot2::aes(fill = Value), color = "white", linewidth = 0.2) +
@@ -140,7 +141,8 @@ plot_matrix <- function(m,
     ) } +
     ggplot2::scale_fill_gradient(low = low_color, high = high_color, na.value = blank_color) +
     ggplot2::labs(
-      title = paste0("Matrix ", m$MatrixId, " — ", m$Country, " (", m$LocationText, ")"),
+      title = paste0("Matrix — ", m$country, " (", m$location_type, ")"),
+      subtitle = m$author_year,
       x = "Contacts age groups (years)",
       y = "Participants age groups (years)"
     ) +
@@ -171,11 +173,11 @@ plot_matrix_gradient <- function(m,
                                  size = 4,
                                  col_label_orientation = "normal") {
 
-  stopifnot(is.list(m), !is.null(m$Matrix))
+  stopifnot(is.list(m), !is.null(m$matrix))
 
-  df <- reshape2::melt(m$Matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
-  df$RowLabel <- m$RowLabels[df$RowIdx]
-  df$ColLabel <- m$ColLabels[df$ColIdx]
+  df <- reshape2::melt(m$matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
+  df$RowLabel <- m$row_labels[df$RowIdx]
+  df$ColLabel <- m$col_labels[df$ColIdx]
 
   ggplot2::ggplot(df, ggplot2::aes(x = ColLabel, y = RowLabel)) +
     ggplot2::geom_tile(ggplot2::aes(fill = Value), color = "white", linewidth = 0.2) +
@@ -188,7 +190,8 @@ plot_matrix_gradient <- function(m,
       na.value = blank_color
     ) +
     ggplot2::labs(
-      title = paste0("Matrix ", m$MatrixId, " — ", m$Country, " (", m$LocationText, ")"),
+      title = paste0("Matrix — ", m$country, " (", m$location_type, ")"),
+      subtitle = m$author_year,
       x = "Contacts age groups (years)",
       y = "Participants age groups (years)"
     ) +
@@ -202,4 +205,3 @@ plot_matrix_gradient <- function(m,
       plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
     )
 }
-
