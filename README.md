@@ -5,8 +5,7 @@
 
 `ssamixr` provides harmonized, ready‑to‑use **social contact matrices**
 from empirical studies conducted across Sub‑Saharan Africa. The package includes **171 matrices** covering multiple countries,
-settings, and study designs — all standardized for infectious disease
-modeling and comparative epidemiology.
+settings, and study designs, all standardized for infectious disease modeling and comparative epidemiology.
 
 ------------------------------------------------------------------------
 

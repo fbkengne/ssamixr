@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19174136.svg)](https://doi.org/10.5281/zenodo.19174136)
 
-`ssamixr` provides harmonized, ready‑to‑use **social contact matrices** from empirical studies conducted across Sub‑Saharan Africa. The package includes **171 matrices** covering multiple countries, settings, and study designs — all standardized for infectious disease modeling and comparative epidemiology.
+`ssamixr` provides harmonized, ready‑to‑use **social contact matrices** from empirical studies conducted across Sub‑Saharan Africa. The package includes **171 matrices** covering multiple countries, settings, and study designs, all standardized for infectious disease modeling and comparative epidemiology.
 
 ---
 
