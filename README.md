@@ -8,13 +8,13 @@ disease modeling and comparative epidemiology.
 # 🚀 Installation
 
 ```r
-# Install devtools if needed
-if (!requireNamespace("devtools", quietly = TRUE)) {
-  install.packages("devtools")
+# Install pak if needed
+if (!requireNamespace("pak", quietly = TRUE)) {
+  install.packages("pak")
 }
 
-# Install ssamixr from GitHub
-devtools::install_github("fbkengne/ssamixr")
+# Install the ssamixr package
+pak::pak("fbkengne/ssamixr")
 
 # Load the package
 library(ssamixr)
@@ -34,8 +34,6 @@ Here is the recommended workflow.
 1️⃣ List all matrices
 
 ```r
-library(ssamixr)
-
 all_mats <- list_matrices()
 head(all_mats)
 ```
@@ -72,7 +70,6 @@ kenya_hh <- filter_matrices(country = "Kenya", location_type = "HH")
 
 ```r
 id <- kenya$matrix_id[1]
-id
 ```
 
 4️⃣ Retrieve the matrix

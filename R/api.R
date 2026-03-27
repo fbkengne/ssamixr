@@ -27,7 +27,7 @@ list_matrices <- function() {
 #' @param study_id Optional character vector of study IDs.
 #' @param author_year Optional character vector of author-year labels.
 #' @param location_type Optional character vector such as
-#'   "All", "HH", "School", "Work", "Other".
+#'   "All", "HH", "NonHH", "School", "Work", "Other".
 #'
 #' @details
 #' For a complete catalogue of all 171 matrices across 18 Sub-Saharan African countries,
@@ -43,20 +43,28 @@ filter_matrices <- function(country = NULL,
 
   df <- ssa_matrices_meta
 
+  # Step 1: Expand location_type internally
+  df_expanded <- df %>%
+    dplyr::mutate(row_id = dplyr::row_number()) %>%   # track original rows
+    tidyr::separate_rows(location_type, sep = ";")
+
+  # Step 2: Apply filters on expanded data
   if (!is.null(country)) {
-    df <- dplyr::filter(df, country %in% !!country)
+    df_expanded <- dplyr::filter(df_expanded, country %in% !!country)
   }
   if (!is.null(study_id)) {
-    df <- dplyr::filter(df, study_id %in% !!study_id)
+    df_expanded <- dplyr::filter(df_expanded, study_id %in% !!study_id)
   }
   if (!is.null(author_year)) {
-    df <- dplyr::filter(df, author_year %in% !!author_year)
+    df_expanded <- dplyr::filter(df_expanded, author_year %in% !!author_year)
   }
   if (!is.null(location_type)) {
-    df <- dplyr::filter(df, location_type %in% !!location_type)
+    df_expanded <- dplyr::filter(df_expanded, location_type %in% !!location_type)
   }
 
-  df
+  # Step 3: Return original rows (preserve combined location_type)
+  df %>% 
+    dplyr::slice(unique(df_expanded$row_id))
 }
 
 #' Retrieve a specific social contact matrix by ID
@@ -92,3 +100,101 @@ get_matrix <- function(matrix_id) {
 
   ssa_matrices_list[[matrix_id]]
 }
+
+#' Plot a single social contact matrix
+#'
+#' @param m A list returned by get_matrix().
+#' @param blank_color Color for missing cells.
+#' @param low_color Low end of the fill gradient.
+#' @param high_color High end of the fill gradient.
+#' @param value_text Whether to print numeric values in cells.
+#' @param size Text size for cell values.
+#' @param col_label_orientation "normal" or "vertical".
+#'
+#' @return A ggplot object.
+#' @export
+plot_matrix <- function(m,
+                        blank_color = "grey90",
+                        low_color = "white",
+                        high_color = "red",
+                        value_text = TRUE,
+                        size = 4,
+                        col_label_orientation = "normal") {
+
+  stopifnot(is.list(m), !is.null(m$Matrix))
+
+  df <- reshape2::melt(m$Matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
+  df$RowLabel <- m$RowLabels[df$RowIdx]
+  df$ColLabel <- m$ColLabels[df$ColIdx]
+
+  ggplot2::ggplot(df, ggplot2::aes(x = ColLabel, y = RowLabel)) +
+    ggplot2::geom_tile(ggplot2::aes(fill = Value), color = "white", linewidth = 0.2) +
+    { if (isTRUE(value_text)) ggplot2::geom_text(
+      ggplot2::aes(label = ifelse(is.na(Value), "", round(Value, 2))),
+      size = size, fontface = "bold"
+    ) } +
+    ggplot2::scale_fill_gradient(low = low_color, high = high_color, na.value = blank_color) +
+    ggplot2::labs(
+      title = paste0("Matrix ", m$MatrixId, " — ", m$Country, " (", m$LocationText, ")"),
+      x = "Contacts age groups (years)",
+      y = "Participants age groups (years)"
+    ) +
+    ggplot2::theme_minimal(base_size = 14) +
+    ggplot2::theme(
+      axis.text.x = if (col_label_orientation == "vertical") {
+        ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
+      } else {
+        ggplot2::element_text()
+      },
+      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
+    )
+}
+
+#' Plot a single social contact matrix (gradientn palette)
+#'
+#' @param m A list returned by get_matrix().
+#' @param blank_color Color for missing cells.
+#' @param value_text Whether to print numeric values in cells.
+#' @param size Text size for cell values.
+#' @param col_label_orientation "normal" or "vertical".
+#'
+#' @return A ggplot object.
+#' @export
+plot_matrix_gradient <- function(m,
+                                 blank_color = "grey90",
+                                 value_text = TRUE,
+                                 size = 4,
+                                 col_label_orientation = "normal") {
+
+  stopifnot(is.list(m), !is.null(m$Matrix))
+
+  df <- reshape2::melt(m$Matrix, varnames = c("RowIdx", "ColIdx"), value.name = "Value")
+  df$RowLabel <- m$RowLabels[df$RowIdx]
+  df$ColLabel <- m$ColLabels[df$ColIdx]
+
+  ggplot2::ggplot(df, ggplot2::aes(x = ColLabel, y = RowLabel)) +
+    ggplot2::geom_tile(ggplot2::aes(fill = Value), color = "white", linewidth = 0.2) +
+    { if (isTRUE(value_text)) ggplot2::geom_text(
+      ggplot2::aes(label = ifelse(is.na(Value), "", round(Value, 2))),
+      size = size, fontface = "bold"
+    ) } +
+    ggplot2::scale_fill_gradientn(
+      colours = c("#FFFFCC", "#9E9AC8", "#6A51A3", "#3F007D"),
+      na.value = blank_color
+    ) +
+    ggplot2::labs(
+      title = paste0("Matrix ", m$MatrixId, " — ", m$Country, " (", m$LocationText, ")"),
+      x = "Contacts age groups (years)",
+      y = "Participants age groups (years)"
+    ) +
+    ggplot2::theme_minimal(base_size = 14) +
+    ggplot2::theme(
+      axis.text.x = if (col_label_orientation == "vertical") {
+        ggplot2::element_text(angle = 90, vjust = 0.5, hjust = 1)
+      } else {
+        ggplot2::element_text()
+      },
+      plot.title = ggplot2::element_text(face = "bold", hjust = 0.5)
+    )
+}
+

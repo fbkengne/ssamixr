@@ -19,7 +19,7 @@ filter_matrices(
 \item{author_year}{Optional character vector of author-year labels.}
 
 \item{location_type}{Optional character vector such as
-"All", "HH", "School", "Work", "Other".}
+"All", "HH", "NonHH", "School", "Work", "Other".}
 }
 \value{
 A tibble containing only matrices that match the filters.
